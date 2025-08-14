@@ -1,13 +1,21 @@
 name: deploy
+
 on:
   workflow_call:
     inputs:
-      path:        { required: true, type: string }
-      compose_file:{ required: true, type: string }
-      compose_services:{ required: true, type: string }
+      path:
+        required: true
+        type: string
+      compose_file:
+        required: true
+        type: string
+      compose_services:
+        required: true
+        type: string
+
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: [self-hosted, pi, prod]
     steps:
       - name: Pull and restart
         run: |
